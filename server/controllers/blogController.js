@@ -4,8 +4,6 @@ import Blog from "../models/Blog.js";
 import main from "../configs/gemini.js";
 import Comment from "../models/comment.js";
 
-
-
 export const addBlog=async(req,res)=>{
     try{
         const {title,subTitle,description,category,isPublished}=JSON.parse(req.body.blog);
@@ -96,7 +94,11 @@ export const togglePublish=async(req,res)=>{
 export const addComment=async(req,res)=>{
     try{
         const {blog,name,content}=req.body;
-        await Comment.create({blog,name,content});
+        // Validate data
+        if (!blog || !name || !content) {
+            return res.status(400).json({ success: false, message: "All fields are required" });
+        }
+        await Comment.create({blog: blog, name, content});
         res.json({success:true,message:"Comment added for review"})
     }catch(error){ 
         res.json({success:false,message:error.message})
