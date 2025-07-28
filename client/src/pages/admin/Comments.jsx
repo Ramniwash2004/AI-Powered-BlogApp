@@ -9,7 +9,7 @@ const Comments = () => {
 
     const {axios}=useAppContext()
 
-    const fatchComments=async ()=>{
+    const fetchComments=async ()=>{
         try{
             const {data}=await axios.get("/api/admin/comments")
             data.success ? setComments(data.comments):toast.error(data.message)
@@ -18,7 +18,7 @@ const Comments = () => {
          }
     }
     useEffect(()=>{
-        fatchComments();
+        fetchComments();
     },[]);
 
     return (
@@ -43,7 +43,7 @@ const Comments = () => {
                         {comments.filter((comment)=>{
                             if(filter ==="Approved") return comment.isApproved === true;
                             return comment.isApproved === false;
-                        }).map((comment,index)=><CommentTableItem key={comment._id} comment={comment} index={index+1} fatchComments={fatchComments}/>)}
+                        }).map((comment,index)=><CommentTableItem key={comment._id} comment={comment} index={index+1} fetchComments={fetchComments}/>)}
                     </tbody>    
                 </table> 
             </div>

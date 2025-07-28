@@ -1,4 +1,4 @@
 import multer from "multer"
-const upload = multer({strong:multer.diskStorage({})})
+const upload = multer({storage:multer.diskStorage({})})
 
 export default upload;

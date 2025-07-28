@@ -98,8 +98,8 @@ const Blog=()=>{
             <div className="max-w-3xl mx-auto ">
                 <p className="font-semibold mb-4">Add your Comment</p>
                 <form onSubmit={addComment} className="flex flex-col items-start gap-4 max-w-lg">
-                        <input conChange={(e)=>setName(e.target.value)} value={name} type="text" placeholder="Your Name" required className="w-full p-2 border border-gray-300 rounded outline-none" />
-                        <textarea conChange={(e)=>setContent(e.target.value)} value={content} placeholder="Your Comment" className="w-full p-2 border border-gray-300 rounded outline-none h-48" required></textarea>
+                        <input onChange={(e)=>setName(e.target.value)} value={name} type="text" placeholder="Your Name" required className="w-full p-2 border border-gray-300 rounded outline-none" />
+                        <textarea onChange={(e)=>setContent(e.target.value)} value={content} placeholder="Your Comment" className="w-full p-2 border border-gray-300 rounded outline-none h-48" required></textarea>
                         <button type="submit" className="bg-primary text-white rounded p-2 px-8 hover:scale-102 transition-all cursor-pointer">Submit</button>
                 </form>
             </div>

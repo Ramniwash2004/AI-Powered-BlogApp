@@ -3,7 +3,7 @@ import Blog from "../models/Blog.js";
 import Comment from "../models/comment.js";
 
 // allow the user to login logic
-const adminLogin=async (req,res)=>{
+export const adminLogin=async(req,res)=>{
     try{
         const {email,password}=req.body;
 
@@ -17,7 +17,6 @@ const adminLogin=async (req,res)=>{
         res.json({success:false,message:error.message})
     }
 }
-export default adminLogin;
 
 export const getAllBlogsAdmin=async(req,res)=>{
     try{

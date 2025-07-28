@@ -2,6 +2,9 @@ import fs from "fs"
 import imagekit from "../configs/imagekit.js";
 import Blog from "../models/Blog.js";
 import main from "../configs/gemini.js";
+import Comment from "../models/comment.js";
+
+
 
 export const addBlog=async(req,res)=>{
     try{
@@ -89,16 +92,17 @@ export const togglePublish=async(req,res)=>{
     }
 }
 
-
+ 
 export const addComment=async(req,res)=>{
     try{
         const {blog,name,content}=req.body;
         await Comment.create({blog,name,content});
         res.json({success:true,message:"Comment added for review"})
-    }catch(error){
+    }catch(error){ 
         res.json({success:false,message:error.message})
     }
 }
+
 
 export const getBlogComments=async(req,res)=>{
     try{

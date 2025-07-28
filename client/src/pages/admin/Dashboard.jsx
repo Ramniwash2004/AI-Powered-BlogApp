@@ -15,7 +15,7 @@ const Dashboard = () => {
     const {axios}=useAppContext()
     
 
-    const fatchDashboardData = async () => {
+    const fetchDashboardData = async () => {
        try{
         const {data}=await axios.get("/api/admin/dashboard")
         data.success ? setDashboardData(data.dashboardData):toast.error(data.message)
@@ -24,7 +24,7 @@ const Dashboard = () => {
        }
     }
     useEffect(() => {
-        fatchDashboardData();
+        fetchDashboardData();
     }, []);
 
     return (
@@ -72,7 +72,7 @@ const Dashboard = () => {
                         </thead>
                         <tbody>
                             {dashboardData.recentBlogs.map((blog,index)=>{
-                                return <BlogTableItem key={blog._id} blog={blog} fatchBlogs={fatchDashboardData} index={index+1} />
+                                return <BlogTableItem key={blog._id} blog={blog} fetchBlogs={fetchDashboardData} index={index+1} />
                             })}
                         </tbody>
                     </table>
